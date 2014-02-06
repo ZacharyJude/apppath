@@ -1,0 +1,9 @@
+/target
+/eclipse-target
+/test-output/
+/src/main/webapp/WEB-INF/static/uploads/
+/.settings/
+/.project
+/.classpath
+*.iml
+/.idea/
