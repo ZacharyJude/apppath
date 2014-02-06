@@ -7,7 +7,6 @@
 
     <bean id="httpService" class="com.wandoujia.commons.httputils.service.HttpServiceImpl"/>
 
-    <!--
     <bean id="commonAccountService" class="com.wandoujia.commons.account.service.AccountService">
         <property name="profileUrl" value="${account.profileUrl}" />
         <property name="batchProfileUrl" value="${account.batchProfileUrl}" />
@@ -18,7 +17,6 @@
         <property name="authCookieName" value="wdj_auth" />
         <property name="accountService" ref="commonAccountService" />
     </bean>
-    -->
 
     <!-- Activates scanning of Autowired -->
     <context:annotation-config/>

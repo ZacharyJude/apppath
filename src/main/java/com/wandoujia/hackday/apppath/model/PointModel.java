@@ -3,10 +3,19 @@ package com.wandoujia.hackday.apppath.model;
 import java.util.Date;
 
 public class PointModel {
+    private Long uid;
     private String udid;
     private String packageName;
     private Date start;
     private Long duration;
+
+    public Long getUid() {
+        return uid;
+    }
+
+    public void setUid(Long uid) {
+        this.uid = uid;
+    }
 
     public String getUdid() {
         return udid;

@@ -6,12 +6,14 @@ import java.util.Date;
 public interface PointDao {
 
     public class AddPointArgModel {
+        public Long uid;
         public String udid;
         public String packageName;
         public Date start;
         public Long duration;
 
-        public AddPointArgModel(String udid, String packageName, Date start, Long duration) { 
+        public AddPointArgModel(Long uid, String udid, String packageName, Date start, Long duration) { 
+            this.uid = uid;
             this.udid = udid;
             this.packageName = packageName;
             this.start = start;
@@ -19,7 +21,7 @@ public interface PointDao {
         }
 
         public AddPointArgModel() {
-            this(null, null, null, null);
+            this(null, null, null, null, null);
         }
     }
     

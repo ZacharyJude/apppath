@@ -15,6 +15,7 @@ public class PointRowMapper implements RowMapper<PointModel> {
 
     public PointModel mapRow(ResultSet rs, int rowNum) throws SQLException {
         PointModel model = new PointModel();
+        model.setUid(rs.getLong(TablePoint.UID));
         model.setUdid(rs.getString(TablePoint.UDID));
         model.setPackageName(rs.getString(TablePoint.PACKAGE_NAME));
         model.setStart(rs.getDate(TablePoint.START));

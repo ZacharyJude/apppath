@@ -27,6 +27,7 @@ public class PointDaoMysqlImpl implements PointDao {
     @Override
     public void add(Collection<AddPointArgModel> args) {
         String insertingFields[] = new String[] {
+            TablePoint.UID,
             TablePoint.UDID,
             TablePoint.PACKAGE_NAME,
             TablePoint.START,
@@ -46,6 +47,7 @@ public class PointDaoMysqlImpl implements PointDao {
         );
 
         for(AddPointArgModel a : args) {
+            sqlParams.add(a.uid);
             sqlParams.add(a.udid);
             sqlParams.add(a.packageName);
             sqlParams.add(a.start);

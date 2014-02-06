@@ -31,24 +31,39 @@ public class PointController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
+    private WdjUserDetailsService wdjUserDetailService;
+
+    @Autowired
     private PointService pointService;
 
     @RequestMapping(method = RequestMethod.POST, value = "/feed", produces = "application/json; charset=utf-8")
     @ResponseBody
     public String feedAction(
+        @CookieValue(value = "wdj_auth", required = false) String wdj_auth,
         @RequestParam(value = "content", required = true) String contentJsonDataStr,
         HttpServletRequest request,
         HttpServletResponse response
     ) throws Exception {
-        
+
         OperationStatus opStatus = OperationStatus.UNKNOWN;
+
+        String remoteAddr = HttpUtils.getRemoteIp(request);
+        Long uid = null;
+        if(null != wdj_auth) {
+            WdjUserDetails wdjUserDetails = wdjUserDetailService.loadUserByAuthAndAddress(wdj_auth, remoteAddr);
+            if(null == wdjUserDetails) {
+                opStatus = OperationStatus.INVALID_USER;
+                return SerializationUtils.toJson(ResponseUtil.createSimpleResponse(opStatus.getCode(), opStatus.getMsg()));
+            }
+            uid = wdjUserDetails.getUid();
+        }
 
         Map<String, Object> contentJsonData = SerializationUtils.fromJson(contentJsonDataStr, Map.class);
         
         String udid = (String)contentJsonData.get("udid");
         List<Map<String, Object>> pointDatas = (List<Map<String, Object>>)contentJsonData.get("points");
 
-        PointService.AddUdidPointArgModel arg = new PointService.AddUdidPointArgModel(udid);
+        PointService.AddUdidPointArgModel arg = new PointService.AddUdidPointArgModel(uid, udid);
         for(Map<String, Object> pd : pointDatas) {
             arg.addPoint(
                 (String)pd.get(pd.get("packageName")),
