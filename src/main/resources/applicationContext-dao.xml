@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+       default-lazy-init="false">
+
+    <bean id="apppathServerDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close">
+        <property name="driverClass" value="${database.apppath.driverClassName}"/>
+        <property name="jdbcUrl" value="${database.apppath.url}"/>
+        <property name="user" value="${database.apppath.userName}"/>
+        <property name="password" value="${database.apppath.password}"/>
+        <property name="initialPoolSize">
+            <value>3</value>
+        </property>
+        <property name="minPoolSize">
+            <value>3</value>
+        </property>
+        <property name="maxPoolSize">
+            <value>20</value>
+        </property>
+        <property name="autoCommitOnClose">
+            <value>true</value>
+        </property>
+        <property name="testConnectionOnCheckin">
+            <value>true</value>
+        </property>
+        <property name="checkoutTimeout">
+            <value>5000</value>
+        </property>
+        <property name="idleConnectionTestPeriod">
+            <value>200</value>
+        </property>
+        <property name="acquireIncrement">
+            <value>1</value>
+        </property>
+        <property name="maxIdleTime">
+            <value>25200</value>
+        </property>
+        <property name="maxIdleTimeExcessConnections">
+            <value>1800</value>
+        </property>
+        <property name="maxStatements">
+            <value>0</value>
+        </property>
+        <property name="numHelperThreads">
+            <value>3</value>
+        </property>
+        <property name="preferredTestQuery">
+            <value>select 1;</value>
+        </property>
+        <property name="unreturnedConnectionTimeout" value="120"/>
+        <property name="debugUnreturnedConnectionStackTraces" value="true"/>
+    </bean>
+
+    <!-- Activates scanning of Autowired -->
+    <context:annotation-config/>
+
+    <bean id="apppathJdbcTemplate" autowire-candidate="true" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="apppathServerDataSource"/>
+    </bean>
+
+    <bean id="pointDaoMysqlImpl" class="com.wandoujia.hackday.apppath.dao.mysql.PointDaoMysqlImpl" />
+    <bean id="pointDaoImpl" class="com.wandoujia.hackday.apppath.dao.impl.PointDaoImpl" />
+
+</beans>

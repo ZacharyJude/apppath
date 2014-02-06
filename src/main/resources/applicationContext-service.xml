@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+       default-lazy-init="false">
+
+    <bean id="httpService" class="com.wandoujia.commons.httputils.service.HttpServiceImpl"/>
+
+    <!--
+    <bean id="commonAccountService" class="com.wandoujia.commons.account.service.AccountService">
+        <property name="profileUrl" value="${account.profileUrl}" />
+        <property name="batchProfileUrl" value="${account.batchProfileUrl}" />
+        <property name="modifiedUidsUrl" value="${account.modifiedUidsUrl}" />
+    </bean>
+
+    <bean id="wdjUserDetailsService" class="com.wandoujia.commons.account.service.WdjUserDetailsService">
+        <property name="authCookieName" value="wdj_auth" />
+        <property name="accountService" ref="commonAccountService" />
+    </bean>
+    -->
+
+    <!-- Activates scanning of Autowired -->
+    <context:annotation-config/>
+
+    <bean id="pointServiceImpl" class="com.wandoujia.hackday.apppath.service.impl.PointServiceImpl" />
+
+</beans>
