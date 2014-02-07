@@ -66,9 +66,12 @@ public class PointController {
         PointService.AddUdidPointArgModel arg = new PointService.AddUdidPointArgModel(uid, udid);
         for(Map<String, Object> pd : pointDatas) {
             arg.addPoint(
-                (String)pd.get(pd.get("packageName")),
+                (String)pd.get("packageName"),
+                (String)pd.get("data"),
                 new Date(((Number)pd.get("start")).longValue()),
-                Long.valueOf(((Number)pd.get("duration")).longValue())
+                Long.valueOf(((Number)pd.get("duration")).longValue()),
+                Long.valueOf(((Number)pd.get("longitude")).longValue()),
+                Long.valueOf(((Number)pd.get("latitude")).longValue())
             );
         }
 

@@ -6,8 +6,11 @@ public class PointModel {
     private Long uid;
     private String udid;
     private String packageName;
+    private String data;
     private Date start;
     private Long duration;
+    private Long longitude;
+    private Long latitude;
 
     public Long getUid() {
         return uid;
@@ -47,5 +50,29 @@ public class PointModel {
 
     public void setDuration(Long duration) {
         this.duration = duration;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public Long getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Long longitude) {
+        this.longitude = longitude;
+    }
+
+    public Long getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Long latitude) {
+        this.latitude = latitude;
     }
 }

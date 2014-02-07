@@ -9,19 +9,34 @@ public interface PointDao {
         public Long uid;
         public String udid;
         public String packageName;
+        public String data;
         public Date start;
         public Long duration;
+        public Long longitude;
+        public Long latitude;
 
-        public AddPointArgModel(Long uid, String udid, String packageName, Date start, Long duration) { 
+        public AddPointArgModel(
+            Long uid, 
+            String udid, 
+            String packageName, 
+            String data,
+            Date start, 
+            Long duration,
+            Long longitude,
+            Long latitude
+        ) { 
             this.uid = uid;
             this.udid = udid;
             this.packageName = packageName;
+            this.data = data;
             this.start = start;
             this.duration = duration;
+            this.longitude = longitude;
+            this.latitude = latitude;
         }
 
         public AddPointArgModel() {
-            this(null, null, null, null, null);
+            this(null, null, null, null, null, null, null, null);
         }
     }
     

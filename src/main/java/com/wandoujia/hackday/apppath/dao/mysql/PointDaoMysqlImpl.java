@@ -30,8 +30,11 @@ public class PointDaoMysqlImpl implements PointDao {
             TablePoint.UID,
             TablePoint.UDID,
             TablePoint.PACKAGE_NAME,
+            TablePoint.DATA,
             TablePoint.START,
-            TablePoint.DURATION
+            TablePoint.DURATION,
+            TablePoint.LONGITUDE,
+            TablePoint.LATITUDE
         };
 
         List<Object> sqlParams = new ArrayList<Object>();
@@ -50,8 +53,11 @@ public class PointDaoMysqlImpl implements PointDao {
             sqlParams.add(a.uid);
             sqlParams.add(a.udid);
             sqlParams.add(a.packageName);
+            sqlParams.add(a.data);
             sqlParams.add(a.start);
             sqlParams.add(a.duration);
+            sqlParams.add(a.longitude);
+            sqlParams.add(a.latitude);
         }
     
         jdbcTemplate.update(sb.toString(), sqlParams.toArray());

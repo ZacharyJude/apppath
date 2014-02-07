@@ -8,7 +8,9 @@ create table if not exists `tb_point` (
     `package_name` varchar(128) not null,
     `start` timestamp not null, 
     `duration` bigint(20) not null, 
-    `location` varchar(100) DEFAULT NULL,
+    `data` text default null,
+    `longitude` smallint DEFAULT NULL,
+    `latitude` smallint DEFAULT NULL,
     index `idx_udid_start` (`udid`, `start`),
     index `idx_udid_duration` (`udid`, `duration`)
 ) engine=InnoDB default charset=utf8;

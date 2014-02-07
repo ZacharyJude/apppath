@@ -20,13 +20,23 @@ public interface PointService {
             this.points = new ArrayList<PointDao.AddPointArgModel>();
         }
 
-        public void addPoint(String packageName, Date start, Long duration) {
+        public void addPoint(
+            String packageName, 
+            String data,
+            Date start, 
+            Long duration,
+            Long longitude,
+            Long latitude
+        ) {
             this.points.add(new PointDao.AddPointArgModel(
                 this.uid,
                 this.udid,
                 packageName,
+                data,
                 start,
-                duration
+                duration,
+                longitude,
+                latitude
             ));
         }
 
