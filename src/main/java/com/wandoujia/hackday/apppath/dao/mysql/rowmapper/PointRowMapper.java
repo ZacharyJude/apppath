@@ -21,8 +21,8 @@ public class PointRowMapper implements RowMapper<PointModel> {
         model.setStart(rs.getDate(TablePoint.START));
         model.setDuration(Long.valueOf(rs.getLong(TablePoint.DURATION)));
         model.setData(rs.getString(TablePoint.DATA));
-        model.setLongitude(Long.valueOf(rs.getShort(TablePoint.LONGITUDE)));
-        model.setLatitude(Long.valueOf(rs.getShort(TablePoint.LATITUDE)));
+        model.setLongitude(Double.valueOf(rs.getDouble(TablePoint.LONGITUDE)));
+        model.setLatitude(Double.valueOf(rs.getDouble(TablePoint.LATITUDE)));
         return model;
     }
 }

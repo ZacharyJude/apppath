@@ -12,8 +12,8 @@ public interface PointDao {
         public String data;
         public Date start;
         public Long duration;
-        public Long longitude;
-        public Long latitude;
+        public Double longitude;
+        public Double latitude;
 
         public AddPointArgModel(
             Long uid, 
@@ -22,8 +22,8 @@ public interface PointDao {
             String data,
             Date start, 
             Long duration,
-            Long longitude,
-            Long latitude
+            Double longitude,
+            Double latitude
         ) { 
             this.uid = uid;
             this.udid = udid;

@@ -9,8 +9,8 @@ create table if not exists `tb_point` (
     `start` timestamp not null, 
     `duration` bigint(20) not null, 
     `data` text default null,
-    `longitude` smallint DEFAULT NULL,
-    `latitude` smallint DEFAULT NULL,
+    `longitude` double DEFAULT NULL,
+    `latitude` double DEFAULT NULL,
     index `idx_udid_start` (`udid`, `start`),
     index `idx_udid_duration` (`udid`, `duration`)
 ) engine=InnoDB default charset=utf8;

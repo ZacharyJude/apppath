@@ -25,8 +25,8 @@ public interface PointService {
             String data,
             Date start, 
             Long duration,
-            Long longitude,
-            Long latitude
+            Double longitude,
+            Double latitude
         ) {
             this.points.add(new PointDao.AddPointArgModel(
                 this.uid,

@@ -70,8 +70,8 @@ public class PointController {
                 (String)pd.get("data"),
                 new Date(((Number)pd.get("start")).longValue()),
                 Long.valueOf(((Number)pd.get("duration")).longValue()),
-                Long.valueOf(((Number)pd.get("longitude")).longValue()),
-                Long.valueOf(((Number)pd.get("latitude")).longValue())
+                (Double)pd.get("longitude"),
+                (Double)pd.get("latitude")
             );
         }
 
