@@ -2,6 +2,7 @@
 /eclipse-target
 /test-output/
 /src/main/webapp/WEB-INF/static/uploads/
+*/*/.DS_Store
 /.settings/
 /.project
 /.classpath
@@ -11,3 +12,5 @@
 /.idea/
 tags
 *.discard
+.DS_Store
+*/.DS_Store

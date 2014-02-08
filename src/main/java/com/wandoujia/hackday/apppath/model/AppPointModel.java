@@ -1,6 +1,9 @@
 package com.wandoujia.hackday.apppath.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -8,7 +11,13 @@ import java.util.Date;
  */
 public class AppPointModel implements Serializable {
 
+    public static enum Type {
+        POINT, FREETRAFFIC, PAYORDER, FREEAMOUNT
+    }
+
     private static final long serialVersionUID = -2917197897692433647L;
+
+    private Type type = Type.POINT;
 
     private Integer id;
 
@@ -20,11 +29,79 @@ public class AppPointModel implements Serializable {
 
     private Long duration;
 
-    private String location;
+    private Double longitude;
+
+    private Double latitude;
 
     private Long uid;
 
     private String icon;
+
+    private String comment;
+
+    private BigDecimal traffic;
+
+    private BigDecimal amount;
+
+    private String data;
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    @JsonIgnore
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    @JsonIgnore
+    public BigDecimal getTraffic() {
+        return traffic;
+    }
+
+    public void setTraffic(BigDecimal traffic) {
+        this.traffic = traffic;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
 
     public String getIcon() {
         return icon;
@@ -34,6 +111,7 @@ public class AppPointModel implements Serializable {
         this.icon = icon;
     }
 
+    @JsonIgnore
     public Integer getId() {
         return id;
     }
@@ -72,14 +150,6 @@ public class AppPointModel implements Serializable {
 
     public void setDuration(Long duration) {
         this.duration = duration;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public Long getUid() {

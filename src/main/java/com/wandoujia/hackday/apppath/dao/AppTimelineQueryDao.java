@@ -2,6 +2,7 @@ package com.wandoujia.hackday.apppath.dao;
 
 import com.wandoujia.hackday.apppath.model.AppPointModel;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -18,5 +19,21 @@ public interface AppTimelineQueryDao {
      * @param date
      * @return
      */
-    public List<AppPointModel> listAppPoint(String udid, Long uid, Date date);
+    public List<AppPointModel> listAppPoints(String udid, Long uid, Date start, Date end);
+
+    public BigDecimal sumFreedownload(Long uid, Date start, Date end);
+
+    public Long countPayOrders(Long uid, Date start, Date end);
+
+    public BigDecimal sumPayOrders(Long uid, Date start, Date end);
+
+    public Long sumFreeAmount(Long uid, Date start, Date end);
+
+    public List<AppPointModel> listFreeTraffics(Long uid, Date start, Date end);
+
+    public List<AppPointModel> listPayOrders(Long uid, Date start, Date end);
+
+    public List<AppPointModel> listFreeAmounts(Long uid, Date start, Date end);
+
+
 }

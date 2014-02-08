@@ -22,10 +22,5 @@
     <context:annotation-config/>
 
     <bean id="pointServiceImpl" class="com.wandoujia.hackday.apppath.service.impl.PointServiceImpl" />
-    <!--
-    <bean id="appListServiceImpl" class="com.wandoujia.hackday.apppath.service.impl.AppListServiceImpl" >
-        <property name="appListServiceUrl" value="${appListServiceUrl}" />
-    </bean>
-    -->
 
 </beans>
