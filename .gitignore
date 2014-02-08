@@ -6,4 +6,8 @@
 /.project
 /.classpath
 *.iml
+*.ipr
+*.iws
 /.idea/
+tags
+*.discard
