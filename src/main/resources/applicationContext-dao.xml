@@ -4,7 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
        default-lazy-init="false">
-
     <bean id="apppathServerDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
         <property name="driverClass" value="${database.apppath.driverClassName}"/>
@@ -61,6 +60,31 @@
         <property name="dataSource" ref="apppathServerDataSource"/>
     </bean>
 
+    <bean id="adsDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close">
+        <property name="driverClass" value="${jdbc.connection.driver_class}" />
+        <property name="jdbcUrl" value="${jdbc.connection.url}" />
+        <property name="user" value="${jdbc.connection.username}" />
+        <property name="password" value="${jdbc.connection.password}" />
+        <property name="initialPoolSize"><value>3</value></property>
+        <property name="minPoolSize"><value>3</value></property>
+        <property name="maxPoolSize"><value>20</value></property>
+        <property name="autoCommitOnClose"><value>true</value></property>
+        <property name="testConnectionOnCheckin"><value>true</value></property>
+        <property name="checkoutTimeout"><value>5000</value></property>   <!--  Time to wait for an open connection before timing out  -->
+        <property name="idleConnectionTestPeriod"><value>200</value></property>
+        <property name="acquireIncrement"><value>1</value></property>
+        <property name="maxIdleTime"><value>25200</value></property>   <!-- How long to keep unused connections around. MySQL times out idle connections after 8 hours(28,800 seconds), so ensure this value is below MySQL idle timeout-->
+        <property name="maxIdleTimeExcessConnections"><value>1800</value></property>   <!-- How long to hang on to excess unused connections after traffic spike  -->
+        <property name="maxStatements"><value>0</value></property>  <!-- 0 means: statement caching is turned off.  -->
+        <property name="numHelperThreads"><value>3</value></property>  <!-- 3 is default -->
+        <property name="preferredTestQuery"><value>select 1;</value></property>
+    </bean>
+    <bean name="adsJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource">
+            <ref bean="adsDataSource"/>
+        </property>
+    </bean>
     <bean id="pointDaoMysqlImpl" class="com.wandoujia.hackday.apppath.dao.mysql.PointDaoMysqlImpl" />
     <bean id="pointDaoImpl" class="com.wandoujia.hackday.apppath.dao.impl.PointDaoImpl" />
 

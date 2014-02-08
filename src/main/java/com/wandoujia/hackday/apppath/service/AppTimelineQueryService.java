@@ -1,9 +1,9 @@
 package com.wandoujia.hackday.apppath.service;
 
-
 import com.wandoujia.hackday.apppath.model.AppPointModel;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -19,4 +19,6 @@ public interface AppTimelineQueryService {
      * @return
      */
     public List<AppPointModel> listAppPoint(String udid, Long uid, Date date);
+
+    public HashMap<String, Object> sumPointsByWeek(String udid, Long uid, Date date);
 }

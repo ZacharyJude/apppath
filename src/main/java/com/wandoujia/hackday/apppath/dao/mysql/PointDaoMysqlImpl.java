@@ -1,27 +1,26 @@
 package com.wandoujia.hackday.apppath.dao.mysql;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Set;
-
 import com.wandoujia.hackday.apppath.dao.PointDao;
 import com.wandoujia.hackday.apppath.dao.mysql.table.TablePoint;
-
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.dao.DuplicateKeyException;
-import org.apache.commons.lang.StringUtils;
+import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+@Repository
 public class PointDaoMysqlImpl implements PointDao {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
+    @Qualifier("apppathJdbcTemplate")
     private JdbcTemplate jdbcTemplate;
     
     @Override
